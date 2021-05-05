@@ -1,18 +1,14 @@
-import { isEqual } from 'date-fns'
-import Appointment from '../models/Appointments'
-
 import { EntityRepository, Repository } from 'typeorm'
 
+import Appointment from '../models/Appointments'
 @EntityRepository(Appointment)
 class AppointmentsRepository extends Repository<Appointment> {
-  public findByDate(date: Date): Appointment | null {
-    const findAppointment = this.appointments.find(appointment => {
-      isEqual(date, appointment.date),
+  public async findByDate(date: Date): Promise<Appointment | null> {
+    const findAppointment = await this.findOne({
+      where: { date },
     })
-
     return findAppointment || null
   }
 }
-
 
 export default AppointmentsRepository
