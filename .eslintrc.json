@@ -20,6 +20,7 @@
   ],
   "rules": {
     "prettier/prettier": "error",
+    "array-bracket-spacing": "always",
     "import/extensions": [
       "error",
       "ignorePackages",
